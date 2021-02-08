@@ -7,9 +7,14 @@ const userSchema = new Schema(
     password: { type: String, required: true },
     name: { type: String, required: true },
     genre: { type: String, required: true, enum: ["female", "male"] },
+    profileImage: {
+      type: String,
+      default:
+        "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+    },
     // secretquestion: { type: String, required: true },
     // secretresponse: { type: String, required: true },
-    admin: { type: Boolean, default: false },
+    role: { type: String, enum: ["admin", "user"], default: "user" },
     // habits: [],
     // needs: [],
     interest: {
@@ -63,10 +68,10 @@ const userSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: "Activities",
         completed: { type: Boolean, default: false },
-        grade: {
-          type: String,
-          enum: ["1", "2", "3", "4"],
-        },
+        // grade: {
+        //   type: String,
+        //   enum: ["1", "2", "3", "4"],
+        // },
         feeling: {
           type: String,
           enum: ["Relaxé(e)", "Boosté(e)", "Inspiré(e)", "Frustré(e)"],
