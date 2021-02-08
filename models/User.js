@@ -5,8 +5,8 @@ const userSchema = new Schema(
   {
     email: { type: String, required: true },
     password: { type: String, required: true },
-    name: { type: String, required: true },
-    genre: { type: String, required: true, enum: ["female", "male"] },
+    name: String,
+    genre: { type: String, enum: ["female", "male"] },
     profileImage: {
       type: String,
       default:
@@ -17,21 +17,23 @@ const userSchema = new Schema(
     role: { type: String, enum: ["admin", "user"], default: "user" },
     // habits: [],
     // needs: [],
-    interest: {
-      type: String,
-      enum: [
-        "Decoration",
-        "Art du papier",
-        "Bricolage",
-        "Peinture",
-        "Petits plaisirs",
-        "Activité en plein air",
-        "Mercerie",
-        "Jardinage",
-        "Modelage",
-        "Activité de groupe",
-      ],
-    },
+    interest: [
+      {
+        type: String,
+        enum: [
+          "Decoration",
+          "Art du papier",
+          "Bricolage",
+          "Peinture",
+          "Petits plaisirs",
+          "Activité en plein air",
+          "Mercerie",
+          "Jardinage",
+          "Modelage",
+          "Activité de groupe",
+        ],
+      },
+    ],
     animals: {
       type: String,
       enum: ["Chat", "Chien", "Rongeur", "Autres", "Aucun"],
@@ -46,8 +48,9 @@ const userSchema = new Schema(
           "Joyeux(se)",
           "Motivé(e)",
         ],
+        date: Date,
       },
-      { timestamps: { createdAt: "created_at" } },
+      // { timestamps: { createdAt: "created_at" } },
     ],
     favoritesActivities: [
       {

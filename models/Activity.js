@@ -40,7 +40,7 @@ const activitySchema = new Schema(
         type: Object,
         title: String,
         content: String,
-        images: [
+        stepImages: [
           {
             type: String,
             default:
@@ -52,6 +52,10 @@ const activitySchema = new Schema(
     animals: {
       type: String,
       enum: ["Chat", "Chien", "Rongeur", "Autres", "Aucun"],
+    },
+    id_user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
     highlight: Boolean,
     grades: [{ type: String, enum: ["1", "2", "3", "4"] }],
