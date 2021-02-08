@@ -45,10 +45,12 @@ app.use(function (req, res, next) {
 const authRouter = require("./routes/auth");
 const usersRouter = require("./routes/user");
 const activitiesRouter = require("./routes/activity");
+const inspirationsRouter = require("./routes/inspiration");
 
 app.use("/api/auth", authRouter);
 app.use("/api/user", usersRouter);
 app.use("/api/activities", activitiesRouter);
+app.use("/api/inspirations", inspirationsRouter);
 
 // 404 Middleware
 app.use((req, res, next) => {
