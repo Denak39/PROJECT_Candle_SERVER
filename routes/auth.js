@@ -21,7 +21,7 @@ router.post("/signin", (req, res, next) => {
         return res.status(400).json({ message: "Invalid credentials" });
       }
 
-      req.session.currentUser = userDocument._id;
+      req.session.currentUser = userDocument;
       res.redirect("/api/auth/isLoggedIn");
     })
     .catch(next);
@@ -60,7 +60,7 @@ router.post("/signup", (req, res, next) => {
       User.create(newUser)
         .then((newUserDocument) => {
           /* Login on signup */
-          req.session.currentUser = newUserDocument._id;
+          req.session.currentUser = newUserDocument;
           res.redirect("/api/auth/isLoggedIn");
         })
         .catch(next);
