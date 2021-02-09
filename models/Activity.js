@@ -7,7 +7,7 @@ const activitySchema = new Schema(
     subcategories: {
       type: String,
       enum: [
-        "Decoration",
+        "Décoration",
         "Art du papier",
         "Bricolage",
         "Peinture",
