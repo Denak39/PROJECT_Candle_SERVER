@@ -36,6 +36,7 @@ router.post("/signup", (req, res, next) => {
     interest,
     animals,
     profileImage,
+    role,
   } = req.body;
 
   User.findOne({ email })
@@ -53,6 +54,7 @@ router.post("/signup", (req, res, next) => {
         interest,
         animals,
         profileImage,
+        role,
       };
 
       User.create(newUser)

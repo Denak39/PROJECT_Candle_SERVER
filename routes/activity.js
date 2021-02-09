@@ -25,7 +25,7 @@ router.post(
   uploader.single("image"),
   (req, res, next) => {
     const updateValues = { ...req.body };
-
+    console.log(req.session.currentUser);
     //   updateValues.trainerId = req.session.currentUser; // Retrieve the authors id from the session.
     if (req.file) {
       updateValues.image = req.file.path;
