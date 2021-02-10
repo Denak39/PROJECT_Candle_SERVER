@@ -59,7 +59,18 @@ const activitySchema = new Schema(
     },
     highlight: Boolean,
     grades: [{ type: String, enum: ["1", "2", "3", "4"] }],
+    feeling: [
+      {
+        type: Object,
+        feelingName: {
+          type: String,
+          enum: ["Relaxé(e)", "Boosté(e)", "Inspiré(e)", "Frustré(e)"],
+        },
+        count: Number,
+      },
+    ],
   },
+
   { timestamps: { createdAt: "created_at" } }
 );
 

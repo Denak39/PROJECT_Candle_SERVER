@@ -71,14 +71,6 @@ const userSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: "Activities",
         completed: { type: Boolean, default: false },
-        // grade: {
-        //   type: String,
-        //   enum: ["1", "2", "3", "4"],
-        // },
-        feeling: {
-          type: String,
-          enum: ["Relaxé(e)", "Boosté(e)", "Inspiré(e)", "Frustré(e)"],
-        },
         images: [String],
         dateCompleted: { type: Date },
       },
