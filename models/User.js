@@ -6,7 +6,7 @@ const userSchema = new Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     name: String,
-    genre: { type: String, enum: ["female", "male"] },
+    genre: { type: String, enum: ["Femme", "Homme"] },
     profileImage: {
       type: String,
       default:
@@ -21,7 +21,7 @@ const userSchema = new Schema(
       {
         type: String,
         enum: [
-          "Decoration",
+          "Décoration",
           "Art du papier",
           "Bricolage",
           "Peinture",
@@ -34,10 +34,12 @@ const userSchema = new Schema(
         ],
       },
     ],
-    animals: {
-      type: String,
-      enum: ["Chat", "Chien", "Rongeur", "Autres", "Aucun"],
-    },
+    animals: [
+      {
+        type: String,
+        enum: ["Chat", "Chien", "Rongeur", "Autres", "Aucun"],
+      },
+    ],
     mood: [
       {
         type: Object,
@@ -55,21 +57,21 @@ const userSchema = new Schema(
     favoritesActivities: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Activities",
+        ref: "Activity",
       },
       { timestamps: { createdAt: "created_at" } },
     ],
     favoritesInspirations: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Activities",
+        ref: "Activity",
       },
       { timestamps: { createdAt: "created_at" } },
     ],
     userActivities: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Activities",
+        ref: "Activity",
         completed: { type: Boolean, default: false },
         images: [String],
         dateCompleted: { type: Date },
