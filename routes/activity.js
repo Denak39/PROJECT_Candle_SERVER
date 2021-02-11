@@ -52,18 +52,51 @@ router.get("/:id", requireAuth, (req, res, next) => {
   });
 });
 
+// router.patch(
+//   "/:id",
+//   // protectAdminRoute,
+//   uploader.single("image"),
+//   (req, res, next) => {
+//     const activity = { ...req.body };
+
+//     Activity.findById(req.params.id)
+//       .then((itemDocument) => {
+//         if (!itemDocument)
+//           return res.status(404).json({ message: "Item not found" });
+//         if (itemDocument.id_user.toString() !== req.session.currentUser) {
+//           return res
+//             .status(403)
+//             .json({ message: "You are not allowed to update this document" });
+//         }
+
+//         if (req.file) {
+//           activity.image = req.file.secure_url;
+//         }
+
+//         Activity.findByIdAndUpdate(req.params.id, activity, { new: true })
+//           .populate()
+//           .then((updatedDocument) => {
+//             return res.status(200).json(updatedDocument);
+//           })
+//           .catch(next);
+//       })
+//       .catch(next);
+//   }
+// );
+
 router.patch(
   "/:id",
-  protectAdminRoute,
+  // protectAdminRoute,
   uploader.single("image"),
   (req, res, next) => {
     const activity = { ...req.body };
+    const { grades, feeling } = req.body;
 
     Activity.findById(req.params.id)
       .then((itemDocument) => {
         if (!itemDocument)
           return res.status(404).json({ message: "Item not found" });
-        if (itemDocument.id_user.toString() !== req.session.currentUser) {
+        if (itemDocument.id_user.toString() !== req.session.currentUser._id) {
           return res
             .status(403)
             .json({ message: "You are not allowed to update this document" });
@@ -73,7 +106,12 @@ router.patch(
           activity.image = req.file.secure_url;
         }
 
-        Activity.findByIdAndUpdate(req.params.id, activity, { new: true })
+        Activity.findByIdAndUpdate(
+          req.params.id,
+          { $push: { grades: grades, feeling: feeling } },
+          { new: true }
+        )
+
           .populate()
           .then((updatedDocument) => {
             return res.status(200).json(updatedDocument);
