@@ -15,24 +15,44 @@ router.patch(
   requireAuth,
   uploader.single("profileImage"),
   (req, res, next) => {
-    const ActivityId = req.body._id;
-    console.log("route log>>", req.params._id);
+    console.log("req body", req.body);
+    const ActivityId = req.body.activityId;
+    const Completed = req.body.completed;
     if (req.file) {
       req.body.profileImage = req.file.path;
     }
     User.findByIdAndUpdate(
       req.session.currentUser,
-      { $push: { userActivities: ActivityId } },
+      {
+        $push: { userActivities: [{ _id: ActivityId, completed: Completed }] },
+      },
       { new: true }
     )
-      .then((user) => {
-        res.status(201).send(user);
-        console.log("log2", user.userActivities);
+      .then((items) => {
+        res.status(201).send(items);
       })
       .catch((error) => {
         console.log(error);
       });
   }
 );
-
+// router.patch(
+//   "/me",
+//   requireAuth,
+//   uploader.single("profileImage"),
+//   (req, res, next) => {
+//     // If no file is sent, req.file is undefined, leading to an error when trying to
+//     // acces req.file.path (undefined.path) => Cannot read property path of undefined.
+//     if (req.file) {
+//       req.body.profileImage = req.file.path;
+//     }
+//     User.findByIdAndUpdate(req.session.currentUser, req.body, { new: true })
+//       .then((items) => {
+//         res.status(201).send(items);
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//       });
+//   }
+// );
 module.exports = router;

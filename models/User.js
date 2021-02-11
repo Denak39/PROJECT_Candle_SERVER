@@ -70,8 +70,7 @@ const userSchema = new Schema(
     ],
     userActivities: [
       {
-        type: Schema.Types.ObjectId,
-        ref: "Activity",
+        activityId: { type: Schema.Types.ObjectId, ref: "Activity" },
         completed: { type: Boolean, default: false },
         images: [String],
         dateCompleted: { type: Date },
