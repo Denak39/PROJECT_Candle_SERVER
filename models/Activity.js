@@ -27,7 +27,7 @@ const activitySchema = new Schema(
     },
     duration: {
       type: String,
-      enum: ["0-15", "15-30", "30-45", "45-60"],
+      enum: ["15", "30", "45", "60", "90", "120"],
     },
     difficulty: {
       type: String,
