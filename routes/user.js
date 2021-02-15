@@ -16,7 +16,8 @@ router.patch(
   uploader.single("profileImage"),
   (req, res, next) => {
     console.log("req body", req.body);
-    const ActivityId = req.body.activityId;
+    const ActivityId = req.body.activity._id;
+    console.log(ActivityId);
     const Completed = req.body.completed;
     if (req.file) {
       req.body.profileImage = req.file.path;
