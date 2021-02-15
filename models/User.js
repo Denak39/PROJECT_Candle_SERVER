@@ -42,14 +42,16 @@ const userSchema = new Schema(
     ],
     mood: [
       {
-        type: Object,
-        enum: [
-          "Stressé(e)",
-          "Fatigué(e)",
-          "Ennuyé(e)",
-          "Joyeux(se)",
-          "Motivé(e)",
-        ],
+        mood: {
+          type: String,
+          enum: [
+            "Stressé(e)",
+            "Fatigué(e)",
+            "Ennuyé(e)",
+            "Joyeux(se)",
+            "Motivé(e)",
+          ],
+        },
         date: Date,
       },
       // { timestamps: { createdAt: "created_at" } },
