@@ -3,42 +3,28 @@ const Schema = mongoose.Schema;
 
 const activitySchema = new Schema(
   {
-    categories: {
-      pleinAir: {
-        type: String,
-        enum: [
-          "Jardin",
-          "Bricolage",
-          "Marche",
-          "Activité de groupe",
-          "Chat",
-          "Chien",
-        ],
-      },
-      Cosy: {
-        type: String,
-        enum: [
-          "Petits plaisirs",
-          "COnfort",
-          "Ambiance",
-          "Ecriture",
-          "Organisation",
-        ],
-      },
-      DIY: {
-        type: String,
-        enum: [
-          "Dessin",
-          "Bricolage",
-          "Peinture",
-          "Art du papier",
-          "Modelage",
-          "Mercerie",
-          "Décoration",
-          "Chat",
-          "Chien",
-        ],
-      },
+    categories: { type: String, enum: ["DIY", "Cosy", "Plein Air"] },
+    subcategories: {
+      type: String,
+      enum: [
+        "Jardin",
+        "Bricolage",
+        "Marche",
+        "Activité de groupe",
+        "Petits plaisirs",
+        "Confort",
+        "Ambiance",
+        "Ecriture",
+        "Organisation",
+        "Dessin",
+        "Peinture",
+        "Art du papier",
+        "Modelage",
+        "Mercerie",
+        "Décoration",
+        "Chat",
+        "Chien",
+      ],
     },
     title: String,
     image: {
