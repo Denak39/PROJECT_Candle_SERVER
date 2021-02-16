@@ -34,12 +34,11 @@ const userSchema = new Schema(
         ],
       },
     ],
-    animals: [
-      {
-        type: String,
-        enum: ["Chat", "Chien", "Rongeur", "Autres", "Aucun"],
-      },
-    ],
+    animals: {
+      type: String,
+      enum: ["Chat", "Chien", "Chat et Chien", "Aucun"],
+    },
+
     mood: [
       {
         mood: {
