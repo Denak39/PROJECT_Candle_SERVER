@@ -7,23 +7,91 @@ const activitySchema = new Schema(
     subcategories: {
       type: String,
       enum: [
-        "Jardin",
-        "Bricolage",
-        "Marche",
-        "Activité de groupe",
-        "Petits plaisirs",
-        "Confort",
-        "Ambiance",
-        "Ecriture",
-        "Organisation",
-        "Dessin",
-        "Peinture",
-        "Art du papier",
-        "Modelage",
-        "Mercerie",
-        "Décoration",
-        "Chat",
-        "Chien",
+        {
+          name: "Jardinage",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Bricolage",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Homer_Simpson.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Marche",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Activité de groupe",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Petits plaisirs",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Confort",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Ambiance",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Ecriture",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Organisation",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Dessin",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Peinture",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Art du papier",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Modelage",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Mercerie",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Décoration",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Chat",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
+        {
+          name: "Chien",
+          image:
+            "https://vignette.wikia.nocookie.net/simpsons/images/1/14/Ralph_Wiggum.png/revision/latest/top-crop/width/360/height/360?cb=20100704163100",
+        },
       ],
     },
     title: String,
