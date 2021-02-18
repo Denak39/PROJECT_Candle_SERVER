@@ -25,8 +25,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(
   session({
-    store: new MongoStore({ mongooseConnection: mongoose.connection }), // Persist session in database.
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 500 * 60 * 60,
+    }), // Persist session in database.
     secret: process.env.SESSION_SECRET,
+    cookie: { maxAge: 6000000 },
     resave: true,
     saveUninitialized: true,
   })

@@ -38,6 +38,7 @@ const userSchema = new Schema(
           "Décoration",
           "Chat",
           "Chien",
+          "Activité en plein air",
         ],
       },
     ],

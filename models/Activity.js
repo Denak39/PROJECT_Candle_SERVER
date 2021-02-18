@@ -24,6 +24,7 @@ const activitySchema = new Schema(
         "Décoration",
         "Chat",
         "Chien",
+        "Activité en plein air",
       ],
     },
     title: String,
@@ -64,7 +65,7 @@ const activitySchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    highlight: Boolean,
+    highlight: String,
     grades: [{ type: String, enum: ["1", "2", "3", "4"] }],
     feeling: [
       {
