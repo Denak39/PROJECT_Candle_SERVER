@@ -5,9 +5,11 @@ const uploader = require("../config/cloudinary");
 const requireAuth = require("../middlewares/requireAuth"); // Route protection middleware : )
 
 router.get("/me", (req, res, next) => {
-  User.findById(req.session.currentUser).then((items) => {
-    res.status(200).json(items);
-  });
+  User.findById(req.session.currentUser)
+    .populate()
+    .then((items) => {
+      res.status(200).json(items);
+    });
 });
 
 router.patch(
@@ -15,9 +17,7 @@ router.patch(
   requireAuth,
   uploader.single("profileImage"),
   (req, res, next) => {
-    console.log("req body", req.body);
     const ActivityId = req.body.activity._id;
-    console.log(ActivityId);
     const Completed = req.body.completed;
     if (req.file) {
       req.body.profileImage = req.file.path;
@@ -44,7 +44,6 @@ router.patch(
   requireAuth,
   uploader.single("profileImage"),
   (req, res, next) => {
-    console.log("req body", req.body);
     const Mood = req.body[0].mood;
     const MoodDate = req.body[0].date;
     if (req.file) {
