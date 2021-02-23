@@ -7,7 +7,7 @@ const requireAuth = require("../middlewares/requireAuth"); // Route protection m
 const protectAdminRoute = require("../middlewares/protectAdminRoute");
 
 //lists all activities inside a category
-router.get("/", requireAuth, (req, res, next) => {
+router.get("/", (req, res, next) => {
   Activity.find({})
     .populate() // Gives us the author's id (id_user) object document instead of just the id : )
     .then((itemDocuments) => {
