@@ -6,7 +6,7 @@ const requireAuth = require("../middlewares/requireAuth"); // Route protection m
 
 router.get("/me", (req, res, next) => {
   User.findById(req.session.currentUser)
-    .populate()
+    .populate("favoritesActivities")
     .then((items) => {
       res.status(200).json(items);
     });
