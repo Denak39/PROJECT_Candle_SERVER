@@ -66,4 +66,29 @@ router.patch(
       });
   }
 );
+
+router.post("/favorite/:favoriteId", requireAuth, (req, res, next) => {
+  User.findByIdAndUpdate(
+    req.session.currentUser,
+    { $addToSet: { favoritesActivities: req.params.favoriteId } },
+    { new: true }
+  )
+    .then((response) => {
+      console.log("here", response.favoriteId);
+      res.status(200).json(response);
+    })
+    .catch((err) => res.status(500).json(err));
+});
+
+router.post("/no-favorite/:favoriteId", requireAuth, (req, res, next) => {
+  User.findByIdAndUpdate(
+    req.session.currentUser,
+    { $pull: { favoritesActivities: req.params.favoriteId } },
+    { new: true }
+  )
+    .then((response) => {
+      res.status(200).json(response);
+    })
+    .catch((err) => res.status(500).json(err));
+});
 module.exports = router;
