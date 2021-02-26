@@ -5,6 +5,13 @@ const uploader = require("../config/cloudinary");
 const requireAuth = require("../middlewares/requireAuth"); // Route protection middleware : )
 
 router.get("/me", (req, res, next) => {
+  User.findById(req.session.currentUser).then((items) => {
+    res.status(200).json(items);
+  });
+});
+
+//get me avec populate pour les favorites
+router.get("/me2", (req, res, next) => {
   User.findById(req.session.currentUser)
     .populate("favoritesActivities")
     .then((items) => {
