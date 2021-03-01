@@ -32,7 +32,7 @@ router.patch(
     User.findByIdAndUpdate(
       req.session.currentUser,
       {
-        $push: {
+        $addToSet: {
           userActivities: [{ _id: ActivityId, completed: Completed }],
         },
       },
