@@ -74,6 +74,29 @@ router.patch(
   }
 );
 
+router.patch(
+  "/me3",
+  requireAuth,
+  uploader.single("profileImage"),
+  (req, res, next) => {
+    const ActivityId = req.body.activityId;
+    console.log("ActivityId", ActivityId);
+
+    console.log("req.session.id", req.session.currentUser._id);
+    console.log("patch3", req.body);
+    User.findByIdAndUpdate(
+      { _id: req.session.currentUser._id, "userActivities._id": ActivityId },
+      { $set: { "userActivities.$.completed": true } }
+    )
+      .then((items) => {
+        res.status(201).send(items);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+);
+
 router.post("/favorite/:favoriteId", requireAuth, (req, res, next) => {
   User.findByIdAndUpdate(
     req.session.currentUser,
